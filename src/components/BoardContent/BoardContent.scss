@@ -1,0 +1,16 @@
+@import "_setting.scss";
+
+.board-contents {
+  display: flex;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+  }
+  &::-webkit-scrollbar:vertical {
+    height: 11px;
+  }
+  &::-webkit-slider-thumb {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: $gap;
+  }
+}
