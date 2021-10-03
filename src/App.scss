@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600;700;900&display=swap");
+
+$board-bg-color: #0a9b6f;
+$appbar-bg-color: rgba(0, 0, 0, 0.5);
+$list-bg-color: rgb(223, 221, 221);
+
+$gap: 10px;
+$column-header-height: 40px;
+$column-footer-height: 40px;
+$column-border-radius: 5px;
+
+html {
+  margin: 0;
+  padding: 0;
+  font-size: 62, 5%;
+  font-family: "Source Sans Pro", sans-serif;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  display: 100vh;
+  grid-template-rows: 40px 50px 1fr;
+  line-height: 1.3em;
+  background:url(https://www.anhquoc.vn/wp-content/uploads/2016/11/avada-it-section-bg.png);
+  .navbar {
+    padding-left: $gap;
+    display: flex;
+    align-items: center;
+    &.app {
+      background-color: $appbar-bg-color;
+      font-size: 1.5rem;
+    }
+    &.board {
+      background-color: $board-bg-color;
+      font-size: 1.1rem;
+    }
+  }
+
+  .board-columns {
+    display: flex;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    &::-webkit-scrollbar:vertical{
+        height:  11px;
+    }
+    &::-webkit-slider-thumb{
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: $gap;
+    }
+    .board-column {
+      flex: 0 0 auto;
+      width: 272px;
+      height: calc(100%- $gap);
+      &:not(:first-child) {
+        margin-left: $gap;
+      }
+      > * {
+        background-color: $list-bg-color;
+        color: #333;
+        padding: 0 8px;
+      }
+      header {
+        padding-left: 15px;
+        height: $column-header-height;
+        line-height: $column-header-height;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-top-left-radius: $column-border-radius;
+        border-top-right-radius: $column-border-radius;
+      }
+      footer {
+        padding-left: 15px;
+        height: $column-footer-height;
+        line-height: $column-footer-height;
+        font-size: 1.4rem;
+        font-weight: bold;
+        border-bottom-left-radius: $column-border-radius;
+        border-bottom-right-radius: $column-border-radius;
+      }
+      ul {
+        list-style: none;
+        margin: 0;
+        max-height: calc(100% - $column-header-height - $column-footer-height);
+        overflow-y: auto;
+        &::-webkit-scrollbar {
+            -webkit-appearance: none;
+        }
+        &::-webkit-scrollbar:vertical{
+            width: 11px;
+        }
+        &::-webkit-slider-thumb{
+            background-color: darken($list-bg-color, 15);
+            border-right: 5px $list-bg-color solid;
+        }
+        li {
+          background-color: white;
+          padding: $gap;
+          border-radius: $column-border-radius;
+          box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+          &:not(:last-child) {
+            margin-bottom: $gap;
+          }
+          img {
+            margin: 1rem 0;
+            max-width: 100%;
+            display: block;
+          }
+        }
+      }
+    }
+  }
+}
